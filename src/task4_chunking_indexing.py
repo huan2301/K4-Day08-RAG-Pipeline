@@ -56,6 +56,9 @@ EMBEDDING_DIM = 1024
 VECTOR_STORE = "chromadb"  # "chromadb" | "weaviate" | "faiss"
 COLLECTION_NAME = "ecommerce_support_docs"
 
+# Cache model để không phải tải lại nhiều lần
+_embedding_model = None
+
 
 # =============================================================================
 # IMPLEMENTATION
