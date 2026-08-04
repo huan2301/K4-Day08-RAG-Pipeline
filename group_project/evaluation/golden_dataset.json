@@ -13,5 +13,80 @@
     "question": "Người bán không được đăng bán những sản phẩm nào?",
     "expected_answer": "Hàng giả/nhái, sản phẩm bất hợp pháp, vi phạm sở hữu trí tuệ, và các mặt hàng nằm trong danh sách cấm của sàn.",
     "expected_context": "Trang Product Listing Regulations, mục Prohibited Content"
+  },
+  {
+    "question": "Đơn hàng thanh toán bằng thẻ tín dụng hoặc thẻ ghi nợ cần có giá trị tối thiểu bao nhiêu?",
+    "expected_answer": "Giá trị thanh toán cuối cùng của đơn hàng, bao gồm phí vận chuyển và chi phí phát sinh, phải từ 10.000 VNĐ trở lên.",
+    "expected_context": "Trang Payment Methods Overview, mục Credit/Debit Card"
+  },
+  {
+    "question": "Thẻ NAPAS cần điều kiện gì để thanh toán đơn hàng trên Shopee?",
+    "expected_answer": "Người mua cần sử dụng thẻ nội địa NAPAS đã đăng ký dịch vụ Internet Banking; đơn hàng phải đáp ứng điều kiện giá trị thanh toán cuối cùng theo quy định.",
+    "expected_context": "Trang Payment Methods Overview, mục NAPAS Card"
+  },
+  {
+    "question": "Muốn dùng Apple Pay trên Shopee thì cần thiết lập như thế nào?",
+    "expected_answer": "Apple Pay chỉ hỗ trợ trên một số thiết bị của Apple; người dùng cần thêm thẻ tín dụng hoặc thẻ ghi nợ vào ứng dụng Wallet để hoàn tất thiết lập.",
+    "expected_context": "Trang Payment Methods Overview, mục Apple Pay"
+  },
+  {
+    "question": "SPayLater cho phép trả góp theo những kỳ hạn nào?",
+    "expected_answer": "SPayLater cho phép trả sau theo các kỳ 01, 02, 03 hoặc 06 kỳ, tùy điều kiện và chính sách áp dụng.",
+    "expected_context": "Trang Payment Methods Overview, mục SPayLater"
+  },
+  {
+    "question": "Yêu cầu trả hàng hoặc hoàn tiền phải được thực hiện trên tài khoản nào?",
+    "expected_answer": "Mọi yêu cầu trả hàng/hoàn tiền phải được thực hiện trên chính tài khoản Shopee của Người mua.",
+    "expected_context": "Trang Returns and Refunds Policy, mục Return/Refund Eligibility"
+  },
+  {
+    "question": "Shopee có thể hoàn tiền vào những phương thức nào?",
+    "expected_answer": "Tiền hoàn có thể được chuyển vào Ví ShopeePay, SPayLater, thẻ nội địa NAPAS, tài khoản ngân hàng hoặc thẻ tín dụng/ghi nợ đã đăng ký của Người mua, tùy trường hợp.",
+    "expected_context": "Trang Returns and Refunds Policy, mục Refund for Returned Products"
+  },
+  {
+    "question": "Người bán có được đăng cùng một sản phẩm lặp lại ở nhiều danh mục không?",
+    "expected_answer": "Không. Người bán không được đăng một sản phẩm lặp đi lặp lại, tức spam, trong cùng một danh mục hoặc các danh mục khác nhau.",
+    "expected_context": "Trang Product Listing Regulations, mục Prohibited Actions"
+  },
+  {
+    "question": "Hình ảnh sản phẩm khi đăng bán phải đáp ứng yêu cầu gì?",
+    "expected_answer": "Hình ảnh phải rõ ràng, thể hiện chi tiết tình trạng sản phẩm và không được chứa nội dung không liên quan như giới thiệu shop hoặc thông tin liên hệ.",
+    "expected_context": "Trang Product Listing Regulations, mục Product Images"
+  },
+  {
+    "question": "Tên sản phẩm đăng bán trên Shopee cần tuân thủ quy định nào?",
+    "expected_answer": "Tên sản phẩm phải mô tả đúng hàng hóa hoặc dịch vụ, dùng tiếng Việt có dấu, đủ ký tự, rõ ràng và trùng khớp với thông tin trên hình ảnh sản phẩm.",
+    "expected_context": "Trang Product Listing Regulations, mục Product Name"
+  },
+  {
+    "question": "Dữ liệu cá nhân theo Chính sách bảo mật Shopee là gì?",
+    "expected_answer": "Đó là dữ liệu về một cá nhân có thể xác định danh tính trực tiếp hoặc kết hợp với thông tin khác, ví dụ tên, số chứng minh nhân dân và thông tin liên hệ.",
+    "expected_context": "Trang Privacy Policy, mục Definition of Personal Data"
+  },
+  {
+    "question": "Shopee có thể thu thập dữ liệu cá nhân của người dùng khi nào?",
+    "expected_answer": "Shopee có thể thu thập dữ liệu khi người dùng ký kết thỏa thuận, cung cấp tài liệu hoặc thông tin, cấp quyền trên thiết bị để chia sẻ thông tin, hoặc tự gửi dữ liệu cho Shopee.",
+    "expected_context": "Trang Privacy Policy, mục When Shopee Collects Personal Data"
+  },
+  {
+    "question": "Khi nào Shopee tự động hoàn tiền cho Người mua?",
+    "expected_answer": "Shopee sẽ tự động hoàn tiền nếu Người bán không phản hồi trong khoảng thời gian được quy định trước.",
+    "expected_context": "Trang Returns and Refunds Policy, mục Refund for Returned Products"
+  },
+  {
+    "question": "Mô tả sản phẩm đã qua sử dụng cần có thông tin gì?",
+    "expected_answer": "Mô tả phải nêu rõ tình trạng bên ngoài và hiệu suất sử dụng của sản phẩm; nội dung cần trung thực, rõ ràng và không gây hiểu lầm.",
+    "expected_context": "Trang Product Listing Regulations, mục Product Description"
+  },
+  {
+    "question": "Điều gì xảy ra nếu Người bán chọn sai danh mục ngành hàng cho sản phẩm?",
+    "expected_answer": "Sản phẩm sẽ bị ẩn cho đến khi Người bán sửa và chọn danh mục phù hợp; nếu chỉ cập nhật mà không chỉnh sửa, sản phẩm sẽ bị xóa.",
+    "expected_context": "Trang Product Listing Regulations, mục Product Category"
+  },
+  {
+    "question": "Shopee có thể thu thập dữ liệu cá nhân từ những nguồn nào ngoài chính người dùng?",
+    "expected_answer": "Shopee có thể thu thập từ công ty liên kết, bên thứ ba, đối tác vận chuyển hoặc thanh toán, cơ quan đánh giá tín dụng, đối tác marketing, người dùng khác và nguồn dữ liệu công khai.",
+    "expected_context": "Trang Privacy Policy, mục Sources of Personal Data"
   }
 ]

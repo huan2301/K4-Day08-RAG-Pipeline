@@ -1,4 +1,4 @@
-15:56 4/8/26
+8/4/26, 2:44 PM
 
 CHÍNH SÁCH TRẢ HÀNG VÀ HOÀN TIỀN | Shopee Trung tâm trợ giúp
 
@@ -87,43 +87,43 @@ hợp sau:
 
 a.
 
-b.
-
-c.
-
-d.
-
 Người  Mua  đã  thanh  toán  bằng  các  phương  thức  thanh  toán  hợp  lệ  và  trực  tiếp  trên
 Trang Shopee nhưng (i) không nhận được Sản Phẩm, hoặc (ii) không nhận được toàn
 bộ các Sản Phẩm đã đặt, hoặc (iii) nhận được Sản Phẩm là hàng giả, hàng nhái;
 
+b.
+
 Sản Phẩm bị lỗi hoặc bị hư hại trong quá trình vận chuyển;
-
-Người Bán giao sai Sản Phẩm cho Người Mua (ví dụ: sai kích cỡ, sai màu sắc, v.v);
-
-Sản  Phẩm  mà  Người  Mua  nhận  được  khác  biệt  một  cách  rõ  rệt  so  với  thông  tin  mà
-Người Bán cung cấp trong mục mô tả sản phẩm;
-
-e.
-
-Sản Phẩm hết hạn sử dụng;
 
 https://help.shopee.vn/portal/4/article/77251
 
 1/6
 
-15:56 4/8/26
+8/4/26, 2:44 PM
 
 CHÍNH SÁCH TRẢ HÀNG VÀ HOÀN TIỀN | Shopee Trung tâm trợ giúp
 
 Trung tâm trợ giúp Shopee VN
 
+c.
+
+d.
+
+e.
+
 f.
 
 g.
 
-Người Bán đã tự thỏa thuận và đồng ý cho Người Mua trả hàng (tuy nhiên Shopee sẽ
+Người Bán giao sai Sản Phẩm cho Người Mua (ví dụ: sai kích cỡ, sai màu sắc, v.v);
+
 Shopee Policies
+Sản  Phẩm  mà  Người  Mua  nhận  được  khác  biệt  một  cách  rõ  rệt  so  với  thông  tin  mà
+Người Bán cung cấp trong mục mô tả sản phẩm;
+
+Sản Phẩm hết hạn sử dụng;
+
+Người Bán đã tự thỏa thuận và đồng ý cho Người Mua trả hàng (tuy nhiên Shopee sẽ
 cần Người Bán xác nhận lại những thỏa thuận này).
 
 Sản Phẩm ở trạng thái nguyên vẹn và nguyên bao bì nhưng Người Mua không còn nhu
@@ -190,8 +190,19 @@ iii. Trong trường hợp giới hạn hạn mức này được áp dụng, Ng
 hiện yêu cầu Trả hàng COM từ tài khoản Shopee của Người Mua; tuy nhiên, Shopee bảo
 lưu toàn quyền từ chối bất kỳ yêu cầu nào như vậy.
 
+https://help.shopee.vn/portal/4/article/77251
+
+2/6
+
+8/4/26, 2:44 PM
+
+CHÍNH SÁCH TRẢ HÀNG VÀ HOÀN TIỀN | Shopee Trung tâm trợ giúp
+
+Trung tâm trợ giúp Shopee VN
+
 b. Đối với Người Mua sử dụng Gói ShopeeVIP, hạn mức Trả hàng COM là 15 (mười lăm) lần
 trong  mỗi  tháng  dương  lịch  được  tính  bắt  đầu  từ  thời  điểm  Gói  ShopeeVIP  được  Người  Mua
+Shopee Policies
 đăng  ký  thành  công  và  Người  Mua  vẫn  được  hưởng  quyền  lợi  này  cho  đến  khi  chấm  dứt  Gói
 ShopeeVIP (vì bất kỳ lý do gì), trừ trường hợp Người Mua thực hiện bất cứ hành vi nào vi phạm
 các Chính sách của Sàn TMĐT Shopee, bao gồm nhưng không giới hạn ở Điều khoản dịch vụ.
@@ -207,19 +218,8 @@ Shopee.
 iii. Hạn mức còn lại của tháng trước đó sẽ không được cộng dồn vào hạn mức của tháng
 tiếp theo trong bất cứ trường hợp nào.
 
-https://help.shopee.vn/portal/4/article/77251
-
-2/6
-
-15:56 4/8/26
-
-CHÍNH SÁCH TRẢ HÀNG VÀ HOÀN TIỀN | Shopee Trung tâm trợ giúp
-
-Trung tâm trợ giúp Shopee VN
-
 iv. Quyền Trả hàng COM sẽ bị chấm dứt ngay lập tức ngay khi gói ShopeeVIP của Người
 Mua hết hiệu lực hoặc bị Shopee loại khỏi gói ShopeeVIP theo các chính sách, quy định
-Shopee Policies
 của Shopee. Việc chấm dứt ngay lập tức này không ảnh hưởng đến các yêu cầu Trả hàng
 COM đã được tạo trước thời điểm chấm dứt.
 
@@ -275,7 +275,19 @@ hàng/hoàn tiền của Người Mua hoặc (ii) quyết định xử lý yêu 
 cho Người Bán trên Ứng Dụng Shopee và/hoặc thư điện tử và/hoặc tin nhắn điện thoại. Người
 Bán  cần  gửi  phản  hồi  trong  vòng  02  ngày  lịch  (hoặc  thời  hạn  khác  được  quy  định  bởi  Shopee
 trong từng thời điểm) kể từ ngày nhận được thông báo của Shopee nếu không đồng ý với quyết
+
+https://help.shopee.vn/portal/4/article/77251
+
+3/6
+
+8/4/26, 2:44 PM
+
+CHÍNH SÁCH TRẢ HÀNG VÀ HOÀN TIỀN | Shopee Trung tâm trợ giúp
+
+Trung tâm trợ giúp Shopee VN
+
 định hoàn tiền của Shopee hoặc chưa nhận được Sản Phẩm Hoàn Trả/Sản Phẩm Hoàn Trả không
+Shopee Policies
 thuộc  các  trường  hợp  mà  Người  Mua  được  hoàn  hàng/trả  tiền  hoặc  Sản  Phẩm  Hoàn Trả  bị  hư
 hỏng, mất mát trong quá trình hoàn trả. Sau thời gian này mà Shopee không nhận được bất cứ
 phản hồi nào từ Người Bán, Shopee hiểu rằng Người Bán hoàn toàn đồng ý với quyết định xử lý
@@ -294,18 +306,7 @@ trong lúc đóng gói Sản Phẩm Hoàn Trả về để làm bằng chứng �
 sẽ thông báo cho Người Mua về việc phải cung cấp video hay ảnh chụp trong từng trường hợp cụ
 thể.
 
-https://help.shopee.vn/portal/4/article/77251
-
-3/6
-
-15:56 4/8/26
-
-CHÍNH SÁCH TRẢ HÀNG VÀ HOÀN TIỀN | Shopee Trung tâm trợ giúp
-
-Trung tâm trợ giúp Shopee VN
-
 7. TRÁCH NHIỆM VỀ CHI PHÍ VẬN CHUYỂN HOÀN TRẢ SẢN PHẨM CỦA NGƯỜI
-Shopee Policies
 BÁN
 
 7.1.  Người Bán sẽ chịu chi phí vận chuyển cho việc trả hàng chiều hoàn trả sản phẩm đối với:
@@ -374,12 +375,23 @@ Dụng Shopee trong thời hạn 03 – 05 ngày làm việc kể từ ngày Ng�
 Phẩm Hoàn Trả cho đơn vị vận chuyển và yêu cầu trả hàng/hoàn tiền của Người Mua
 được chấp nhận.
 
+https://help.shopee.vn/portal/4/article/77251
+
+4/6
+
+8/4/26, 2:44 PM
+
+CHÍNH SÁCH TRẢ HÀNG VÀ HOÀN TIỀN | Shopee Trung tâm trợ giúp
+
+Trung tâm trợ giúp Shopee VN
+
 8.2.  Với Sản Phẩm không thuộc Shopee Mall, Người Mua có thể lựa chọn hoàn trả Sản Phẩm:
 
 a.
 
 b.
 
+Shopee Policies
 Theo  hình  thức  “Lấy  hàng  hoàn  trả  tại  nhà”  hoặc  “Gửi  trả  hàng  tại  bưu  cục”:  Người
 Mua không phải thanh toán bất cứ chi phí vận chuyển nào cho việc trả hàng.
 
@@ -415,19 +427,7 @@ chuyển và đơn vị vận chuyển xác nhận đã nhận được Sản Ph
 
 9.2.   Trong  trường  hợp  Người  Mua  không  có  lịch  sử  vi  phạm  các  chính  sách,  tiêu  chuẩn  cộng
 đồng  của  Shopee  thì  Shopee,  trong  một  số  trường  hợp,  sẽ  quyết  định  việc  hoàn  tiền  ngay  cho
-
-https://help.shopee.vn/portal/4/article/77251
-
-4/6
-
-15:56 4/8/26
-
-CHÍNH SÁCH TRẢ HÀNG VÀ HOÀN TIỀN | Shopee Trung tâm trợ giúp
-
-Trung tâm trợ giúp Shopee VN
-
 Người Mua mà không cần phải chờ Người Mua trả Sản Phẩm hoặc đáp ứng các trường hợp được
-Shopee Policies
 quy định tại Điều 9.1 nêu trên.
 
 9.3.  Shopee sẽ tự động hoàn tiền cho Người Mua trong trường hợp Người Bán không phản hồi
@@ -465,7 +465,19 @@ Người Bán để hoàn lại cho Người Mua.
 Shopee khuyến khích Người Mua chủ động liên hệ với Người Bán để thương lượng và giải quyết
 với nhau thông qua các kênh liên lạc được cung cấp trên hệ thống Shopee khi có bất cứ vấn đề
 nào phát sinh liên quan giao dịch mua Sản Phẩm. Lưu ý rằng việc sử dụng các kênh liên lạc bên
+
+https://help.shopee.vn/portal/4/article/77251
+
+5/6
+
+8/4/26, 2:44 PM
+
+CHÍNH SÁCH TRẢ HÀNG VÀ HOÀN TIỀN | Shopee Trung tâm trợ giúp
+
+Trung tâm trợ giúp Shopee VN
+
 ngoài hệ thống Shopee có thể sẽ có rủi ro cho Người Mua khi hệ thống Shopee không thể lưu lại
+Shopee Policies
 bằng chứng của việc thương lượng này.
 
 11. TRANH CHẤP GIỮA NGƯỜI MUA VÀ NGƯỜI BÁN
@@ -497,18 +509,6 @@ của Shopee theo Chính Sách Trả Hàng và Hoàn Tiền này.
 kể từ ngày 11/3/2026. Để tham khảo phiên bản trước của Chính Sách Trả Hàng và Hoàn Tiền,
 vui lòng bấm vào ĐÂY.
 
-https://help.shopee.vn/portal/4/article/77251
-
-5/6
-
-15:56 4/8/26
-
-CHÍNH SÁCH TRẢ HÀNG VÀ HOÀN TIỀN | Shopee Trung tâm trợ giúp
-
-Trung tâm trợ giúp Shopee VN
-
-Shopee Policies
-
 Bạn có hài lòng với bài viết này?
 
 Hài lòng
@@ -532,3 +532,4 @@ Privacy Policy
 https://help.shopee.vn/portal/4/article/77251
 
 6/6
+

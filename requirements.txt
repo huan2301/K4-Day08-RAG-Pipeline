@@ -31,7 +31,11 @@ streamlit>=1.35.0
 # Group project - Evaluation
 ragas==0.1.21
 datasets>=2.14.0
-langchain-openai>=0.1.0
+# RAGAS 0.1.x imports integrations that were removed in LangChain 1.x.
+langchain==0.2.17
+langchain-core==0.2.43
+langchain-community==0.2.19
+langchain-openai==0.1.25
 
 # Testing (dung de cham diem bai ca nhan)
 pytest>=7.0.0

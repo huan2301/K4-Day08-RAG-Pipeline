@@ -1,4 +1,4 @@
-15:58 4/8/26
+8/4/26, 2:48 PM
 
 CHÍNH SÁCH BẢO MẬT | Shopee Trung tâm trợ giúp
 
@@ -82,24 +82,24 @@ chúng tôi có tuyên bố ràng khác.
 1.5. Chính sách này được áp dụng cho cả Người bán và Người mua đang sử dụng Dịch vụ trừ khi
 có tuyên bố rõ ràng ngược lại.
 
-2. KHI NÀO SHOPEE SẼ THU THẬP DỮ LIỆU CÁ NHÂN?
-2.1. Chúng tôi sẽ/có thể thu thập dữ liệu cá nhân về bạn:
-
-khi bạn đăng ký và/hoặc sử dụng Các Dịch Vụ hoặc Nền tảng của chúng tôi, hoặc mở một
-tài khoản với chúng tôi;
-
 https://help.shopee.vn/portal/4/article/77244
 
-1/10
+1/11
 
-15:58 4/8/26
+8/4/26, 2:48 PM
 
 CHÍNH SÁCH BẢO MẬT | Shopee Trung tâm trợ giúp
 
 Trung tâm trợ giúp Shopee VN
 
-khi bạn gửi bất kỳ biểu mẫu nào, bao gồm đơn đăng ký hoặc các mẫu đơn khác liên quan
+2. KHI NÀO SHOPEE SẼ THU THẬP DỮ LIỆU CÁ NHÂN?
+2.1. Chúng tôi sẽ/có thể thu thập dữ liệu cá nhân về bạn:
+
 Shopee Policies
+
+khi bạn đăng ký và/hoặc sử dụng Các Dịch Vụ hoặc Nền tảng của chúng tôi, hoặc mở một
+tài khoản với chúng tôi;
+khi bạn gửi bất kỳ biểu mẫu nào, bao gồm đơn đăng ký hoặc các mẫu đơn khác liên quan
 đến bất kỳ sản phẩm và dịch vụ nào của chúng tôi, bằng hình thức trực tuyến hay dưới hình
 thức khác;
 khi bạn ký kết bất kỳ thỏa thuận nào hoặc cung cấp các tài liệu hoặc thông tin khác liên
@@ -153,7 +153,19 @@ số điện thoại;
 giới tính;
 thông tin được gửi bởi hoặc liên quan đến (các) thiết bị được sử dụng để truy cập vào Các
 Dịch vụ hoặc Nền tảng của chúng tôi;
+
+https://help.shopee.vn/portal/4/article/77244
+
+2/11
+
+8/4/26, 2:48 PM
+
+CHÍNH SÁCH BẢO MẬT | Shopee Trung tâm trợ giúp
+
+Trung tâm trợ giúp Shopee VN
+
 thông tin về mạng của bạn, bao gồm danh sách liên hệ của bạn khi đồng ý chia sẻ trên thiết
+Shopee Policies
 bị của bạn, và những người và tài khoản mà bạn có tương tác;
 hình ảnh hoặc âm thanh hoặc video;
 thông tin về nhân thân được cấp bởi chính phủ hoặc các thông tin khác phục vụ cho các
@@ -164,17 +176,6 @@ chúng tôi hoặc các bên thứ ba của bạn, tùy chọn phương tiện l
 liên lạc với chúng tôi, các nhà cung cấp dịch vụ của chúng tôi, và các bên thứ ba khác;
 thông tin sử dụng và giao dịch, bao gồm chi tiết về lịch sử tìm kiếm, giao dịch, quảng cáo
 và nội dung hiển thị mà tương tác với Nền Tảng, cũng như các sản phẩm và dịch vụ có liên
-
-https://help.shopee.vn/portal/4/article/77244
-
-2/10
-
-15:58 4/8/26
-
-CHÍNH SÁCH BẢO MẬT | Shopee Trung tâm trợ giúp
-
-Trung tâm trợ giúp Shopee VN
-
 quan của bạn;
 dữ liệu về địa điểm;
 bất kỳ thông tin nào khác về người dùng khi người dùng đăng nhập để sử dụng Các Dịch
@@ -182,8 +183,6 @@ Vụ hoặc Nền tảng của chúng tôi, và khi người dùng sử dụng C
 cũng như thông tin về việc người dùng sử dụng Các Dịch Vụ hoặc Nền tảng của chúng tôi
 như thế nào; và
 dữ liệu tổng hợp về nội dung người dùng sử dụng.
-
-Shopee Policies
 
 3.2. Bạn đồng ý không cung cấp cho chúng tôi bất cứ thông tin nào không chính xác hoặc gây
 hiểu nhầm và bạn đồng ý sẽ thông báo cho chúng tôi về bất cứ thông tin nào không chính xác
@@ -225,7 +224,19 @@ di động của bạn sử dụng các công nghệ như GPS, Wi-Fi,…. Chúng
 và/hoặc xử lý các thông tin này cho một hoặc nhiều mục đích bao gồm nhưng không giới hạn các
 dịch vụ được cung cấp dựa trên vị trí mà bạn yêu cầu hoặc chuyển các nội dung có liên quan đến
 bạn dựa trên vị trí của bạn hoặc cho phép bạn chia sẻ vị trí của bạn cho các Người sử dụng khác
+
+https://help.shopee.vn/portal/4/article/77244
+
+3/11
+
+8/4/26, 2:48 PM
+
+CHÍNH SÁCH BẢO MẬT | Shopee Trung tâm trợ giúp
+
+Trung tâm trợ giúp Shopee VN
+
 như là một phần của các Dịch vụ được cung cấp bởi các ứng dụng di động của chúng tôi. Đối với
+Shopee Policies
 phần lớn các thiết bị di động, bạn có thể rút lại sự cho phép để chúng tôi được thu thập các thông
 tin này dựa trên vị trí của bạn thông qua các cài đặt trên thiết bị. Nếu bạn có câu hỏi nào về cách
 thức vô hiệu hóa các dịch vụ vị trí trên thiết bị di động của bạn, vui lòng liên hệ với các nhà cung
@@ -242,19 +253,7 @@ Dịch vụ và Nền tảng và thời điểm.
 5.1. Đôi khi chúng tôi hoặc các nhà cung cấp dịch vụ được cho phép và các đối tác quảng cáo của
 chúng tôi có thể sử dụng "cookie" hoặc các tính năng khác để cho phép chúng tôi hoặc các bên
 thứ ba thu thập hoặc chia sẻ thông tin liên quan đến việc sử dụng của bạn đối với Dịch vụ hoặc
-
-https://help.shopee.vn/portal/4/article/77244
-
-3/10
-
-15:58 4/8/26
-
-CHÍNH SÁCH BẢO MẬT | Shopee Trung tâm trợ giúp
-
-Trung tâm trợ giúp Shopee VN
-
 Nền tảng của chúng tôi. Các tính năng này sẽ giúp chúng tôi cải thiện Nền tảng và Các Dịch Vụ
-Shopee Policies
 chúng tôi cung cấp, giúp chúng tôi đề xuất các dịch vụ và tính năng mới, và/hoặc cho phép chúng
 tôi  và  các  đối  tác  quảng  cáo  của  chúng  tôi  cung  cấp  các  nội  dung  có  liên  quan  hơn  đến  bạn.
 "Cookie" là các mã danh định được lưu trữ trên máy tính hoặc thiết bị di động của bạn lưu trữ
@@ -296,7 +295,19 @@ suôn sẻ;
 để giải quyết hoặc tạo điều kiện thuận lợi cho dịch vụ khách hàng, thực hiện các chỉ thị của
 bạn, giải quyết hoặc trả lời bất kỳ thắc mắc nào được gửi bởi (hoặc nhằm được gửi bởi)
 bạn hoặc thay mặt bạn;
+
+https://help.shopee.vn/portal/4/article/77244
+
+4/11
+
+8/4/26, 2:48 PM
+
+CHÍNH SÁCH BẢO MẬT | Shopee Trung tâm trợ giúp
+
+Trung tâm trợ giúp Shopee VN
+
 để liên hệ với bạn hoặc liên lạc với bạn qua điện thoại, tin nhắn văn bản và/hoặc tin nhắn
+Shopee Policies
 fax,  email  và/hoặc  thư  hoặc  cách  khác  nhằm  mục  đích  quản  trị  và/hoặc  quản  lý  quan  hệ
 của bạn với chúng tôi hoặc việc bạn sử dụng Các Dịch Vụ của chúng tôi, chẳng hạn như ở
 việc  truyền  đạt  thông  tin  hành  chính  cho  bạn  liên  quan  đến  Các  Dịch Vụ  của  chúng  tôi.
@@ -319,19 +330,7 @@ vì mục đích tiếp thị và quảng cáo, trong trường hợp này, đ�
 tiện và phương thức liên lạc khác nhau, thông tin và tài liệu tiếp thị và quảng bá liên quan
 đến các sản phẩm và/hoặc dịch vụ (bao gồm, nhưng không giới hạn các sản phẩm và/hoặc
 dịch vụ của các bên thứ ba mà Shopee có thể hợp tác hoặc liên kết) mà Shopee (và/hoặc
-
-https://help.shopee.vn/portal/4/article/77244
-
-4/10
-
-15:58 4/8/26
-
-CHÍNH SÁCH BẢO MẬT | Shopee Trung tâm trợ giúp
-
-Trung tâm trợ giúp Shopee VN
-
 các bên liên kết hoặc công ty có liên quan của nó) có thể bán, tiếp thị hoặc quảng bá, cho
-Shopee Policies
 dù các sản phẩm hoặc dịch vụ đó tồn tại vào lúc này hoặc được tạo ra trong tương lai. Bạn
 có thể hủy đăng ký nhận các thông tin tiếp thị tại bất cứ thời điểm nào bằng cách sử dụng
 chức  năng  hủy  đăng  ký  trong  các  tài  liệu  tiếp  thị  điện  tử.  Chúng  tôi  có  thể  sử  dụng  các
@@ -366,7 +365,19 @@ thứ ba;
 đích khác) đối với dữ liệu cá nhân của bạn;
 để xử lý và/hoặc tạo thuận tiện cho một giao dịch tài sản kinh doanh hoặc một giao dịch tài
 sản  kinh  doanh  tiềm  năng,  trường  hợp  giao  dịch  đó  liên  quan  đến  Shopee  như  một  bên
+
+https://help.shopee.vn/portal/4/article/77244
+
+5/11
+
+8/4/26, 2:48 PM
+
+CHÍNH SÁCH BẢO MẬT | Shopee Trung tâm trợ giúp
+
+Trung tâm trợ giúp Shopee VN
+
 tham gia hoặc chỉ liên quan đến một công ty hay công ty liên kết của Shopee như một bên
+Shopee Policies
 tham gia hoặc liên quan đến Shopee và/hoặc bất kỳ một hay nhiều công ty hoặc công ty
 liên kết của Shopee như (các) bên tham gia, và có thể có các tổ chức bên thứ ba khác tham
 gia giao dịch như thế. "Giao dịch tài sản kinh doanh" là các giao dịch mua, bán, cho thuê,
@@ -397,18 +408,7 @@ nhiên, chúng tôi sẽ thông báo cho bạn biết mục đích khác đó t�
 bạn, trừ phi việc xử lý dữ liệu áp dụng mà không có sự đồng ý của bạn là được phép theo các quy
 định của pháp luật về bảo vệ bí mật thông tin cá nhân hoặc theo quy định pháp luật.
 
-https://help.shopee.vn/portal/4/article/77244
-
-5/10
-
-15:58 4/8/26
-
-CHÍNH SÁCH BẢO MẬT | Shopee Trung tâm trợ giúp
-
-Trung tâm trợ giúp Shopee VN
-
 7. SHOPEE BẢO VỆ VÀ LƯU TRỮ THÔNG TIN KHÁCH HÀNG BẰNG CÁCH NÀO
-Shopee Policies
 7.1. Chúng tôi thực hiện các biện pháp bảo mật khác nhau và luôn nỗ lực để đảm bảo sự an toàn
 của dữ liệu cá nhân của bạn trên các hệ thống của chúng tôi. Dữ liệu cá nhân của người dùng
 được lưu trữ đằng sau các mạng bảo mật và chỉ có thể được truy cập bởi một số nhân viên có
@@ -437,7 +437,19 @@ thuộc trường hợp Chúng tôi không được xóa, tiêu hủy theo quy �
 KHÔNG?
 8.1 Trong quá trình thực hiện hoạt động kinh doanh, chúng tôi sẽ/có thể cần phải sử dụng, xử lý,
 tiết lộ và/hoặc chuyển giao dữ liệu cá nhân của bạn cho các nhà cung cấp dịch vụ bên thứ ba, đại
+
+https://help.shopee.vn/portal/4/article/77244
+
+6/11
+
+8/4/26, 2:48 PM
+
+CHÍNH SÁCH BẢO MẬT | Shopee Trung tâm trợ giúp
+
+Trung tâm trợ giúp Shopee VN
+
 lý và/hoặc các công ty liên kết hoặc công ty liên quan của chúng tôi, và/hoặc các bên thứ ba khác
+Shopee Policies
 có thể ở Việt Nam hoặc bên ngoài Việt Nam, vì một hay nhiều Mục Đích nói trên, và việc tiết lộ
 này sẽ được thực hiện theo đúng trình tự và quy định của pháp luật hiện hành. Chúng tôi cũng có
 thể sử dụng, xử lý, tiết lộ và/hoặc chuyển giao dữ liệu cá nhân của bạn cho các nhà cung cấp dịch
@@ -472,19 +484,7 @@ tái tổ chức, giải thể hoặc bán hay chuyển nhượng một phần h
 cho dù là vấn đề đang diễn ra hay đang trong thủ tục phá sản, thanh lý hoặc thủ tục tương
 tự, trong đó dữ liệu cá nhân Shopee lưu giữ về người dùng của chúng tôi nằm trong các tài
 sản được chuyển nhượng; hoặc cho một bên đối tác trong một giao dịch tài sản kinh doanh
-
-https://help.shopee.vn/portal/4/article/77244
-
-6/10
-
-15:58 4/8/26
-
-CHÍNH SÁCH BẢO MẬT | Shopee Trung tâm trợ giúp
-
-Trung tâm trợ giúp Shopee VN
-
 mà Shopee hoặc bất kỳ công ty liên kết hay công ty liên quan nào của nó có tham gia giao
-Shopee Policies
 dịch; và
 bên thứ ba mà chúng tôi tiết lộ thông tin vì một trong các Mục Đích và các bên thứ ba đó
 ngược lại họ sẽ thu thập và xử lý dữ liệu cá nhân của bạn vì một hoặc nhiều Mục Đích.
@@ -509,7 +509,19 @@ một yêu cầu pháp lý.
 trang web, các công nghệ có thể hoạt động không chính xác hoặc không hoạt động như dự kiến,
 hoặc có người có thể truy cập, lạm dụng hoặc sử dụng sai trái thông tin mà không phải lỗi của
 chúng tôi. Tuy nhiên chúng tôi sẽ triển khai các biện pháp bảo mật hợp lý để bảo vệ dữ liệu cá
+
+https://help.shopee.vn/portal/4/article/77244
+
+7/11
+
+8/4/26, 2:48 PM
+
+CHÍNH SÁCH BẢO MẬT | Shopee Trung tâm trợ giúp
+
+Trung tâm trợ giúp Shopee VN
+
 nhân của bạn theo quy định của các quy định của pháp luật về bảo vệ bí mật thông tin cá nhân;
+Shopee Policies
 tuy  nhiên  không  thể  đảm  bảo  sự  bảo  mật  tuyệt  đối  chẳng  hạn  như  trường  hợp  tiết  lộ  trái  phép
 phát sinh từ hoạt động tin tặc vì ý đồ xấu hoặc hành vi tấn cung tinh vi bưởi kẻ xấu mà không
 phải lỗi của chúng tôi.
@@ -549,19 +561,7 @@ cho Bộ phận bảo vệ Dữ liệu Cá nhân của Shopee tại dpo.vn@shope
 khả năng vi phạm dữ liệu hoặc mất dữ liệu khác của người dùng này.
 
 9. THÔNG TIN VỀ TRẺ EM
-
-https://help.shopee.vn/portal/4/article/77244
-
-7/10
-
-15:58 4/8/26
-
-CHÍNH SÁCH BẢO MẬT | Shopee Trung tâm trợ giúp
-
-Trung tâm trợ giúp Shopee VN
-
 Các Dịch Vụ này không dành cho trẻ em dưới 13 tuổi. Chúng tôi không cố tình thu thập hay lưu
-Shopee Policies
 giữ bất kỳ dữ liệu cá nhân hay thông tin không nhận dạng cá nhân nào của bất kỳ ai dưới 13 tuổi,
 bất kỳ phần nào của Nền tảng của chúng tôi hoặc Các Dịch Vụ khác cũng không dành cho trẻ em
 dưới 13 tuổi. Bố/mẹ hoặc người giám hộ của trẻ em dưới 13 tuổi vui lòng giám sát và đảm bảo
@@ -580,7 +580,19 @@ thiết bị của bạn, để giúp Nền tảng phân tích cách thức ngư
 tôi. Thông tin được tạo bởi cookie về việc bạn sử dụng Nền tảng (bao gồm địa chỉ IP của bạn) sẽ
 được gửi đến và lưu bởi Google trên các máy chủ tại Hoa Kỳ. Google sẽ sử dụng thông tin này
 để đánh giá việc bạn sử dụng Nền tảng của chúng tôi, soạn báo cáo về hoạt động trang web dành
+
+https://help.shopee.vn/portal/4/article/77244
+
+8/11
+
+8/4/26, 2:48 PM
+
+CHÍNH SÁCH BẢO MẬT | Shopee Trung tâm trợ giúp
+
+Trung tâm trợ giúp Shopee VN
+
 cho các nhà điều hành trang web và cung cấp các dịch vụ khác liên quan đến hoạt động trang
+Shopee Policies
 web  và  việc  sử  dụng  Internet.  Google  cũng  có  thể  gửi  thông  tin  này  cho  các  bên  thứ  ba  trong
 trường hợp luật pháp có quy định như thế, hoặc trường hợp các bên thứ ba đó xử lý thông tin
 thay mặt Google. Google sẽ không liên kết địa chỉ IP của bạn với bất kỳ dữ liệu nào khác mà
@@ -625,19 +637,7 @@ pháp  bảo  mật  (hoặc  sự  thiếu  biện  pháp  bảo  mật)  và  
 dụng/dịch vụ được liên kết này. Những trang web/ứng dụng/dịch vụ được liên kết này chỉ vì sự
 thuận tiện cho bạn và do đó bạn tự chịu trách nhiệm khi truy cập chúng. Tuy nhiên, chúng tôi tìm
 cách bảo vệ tính toàn vẹn của Nền tảng của chúng tôi và các liên kết được đặt trên từng trang
-
-https://help.shopee.vn/portal/4/article/77244
-
-8/10
-
-15:58 4/8/26
-
-CHÍNH SÁCH BẢO MẬT | Shopee Trung tâm trợ giúp
-
-Trung tâm trợ giúp Shopee VN
-
 web đó và do đó chúng tôi hoan nghênh ý kiến phản hồi về các trang web được liên kết này (bao
-Shopee Policies
 gồm nếu một trang web cụ thể không hoạt động).
 
 12. SHOPEE SẼ CHUYỂN THÔNG TIN CỦA BẠN RA NƯỚC NGOÀI?
@@ -651,7 +651,19 @@ THÔNG TIN BẠN ĐÃ CUNG CẤP CHO CHÚNG TÔI BẰNG CÁCH NÀO?
 13.1. Rút Lại Sự Đồng Ý, Yêu cầu hạn chế, phản đối xử lý dữ liệu
 13.1.1  Bạn  có  thể  rút  lại  sự  đồng  ý  cho  phép,  yêu  cầu  hạn  chế,  phản  đối  trong  việc  thu
 thập, xử lý, sử dụng và/hoặc tiết lộ dữ liệu cá nhân của bạn mà chúng tôi đang lưu giữ hoặc kiểm
+
+https://help.shopee.vn/portal/4/article/77244
+
+9/11
+
+8/4/26, 2:48 PM
+
+CHÍNH SÁCH BẢO MẬT | Shopee Trung tâm trợ giúp
+
+Trung tâm trợ giúp Shopee VN
+
 soát bằng cách gửi email cho Chuyên viên Bảo Vệ Dữ Liệu Cá Nhân của chúng tôi tại địa chỉ
+Shopee Policies
 email  dpo.vn@shopee.com  hoặc  qua  ĐÂY,  và  chúng  tôi  sẽ  xử  lý  các  yêu  cầu  này  theo  Chính
 Sách Bảo Mật cũng như quy định pháp luật có liên quan. Tuy nhiên, việc bạn rút lại sự cho phép,
 yêu cầu hạn chế, phản đối xử lý dữ liệu cá nhân của bạn có thể đồng nghĩa với việc chúng tôi sẽ
@@ -703,19 +715,7 @@ Liệu Cá Nhân của chúng tôi tại địa chỉ email dpo.vn@shopee.com ho
 
 13.3.2 Chúng tôi có thể tính một khoản phí hợp lý cho bạn để giải quyết và xử lý yêu cầu truy
 cập dữ liệu cá nhân của bạn. Nếu chúng tôi có tính phí, chúng tôi sẽ cung cấp cho bạn ước tính lệ
-
-https://help.shopee.vn/portal/4/article/77244
-
-9/10
-
-15:58 4/8/26
-
-CHÍNH SÁCH BẢO MẬT | Shopee Trung tâm trợ giúp
-
-Trung tâm trợ giúp Shopee VN
-
 phí bằng văn bản. Vui lòng lưu ý rằng chúng tôi không buộc phải đáp ứng hay giải quyết yêu cầu
-Shopee Policies
 truy cập của bạn trừ phi bạn đã đồng ý đóng phí.
 
 13.3.3 Chúng tôi bảo lưu quyền từ chối sửa dữ liệu cá nhân của bạn theo các quy định của pháp
@@ -723,7 +723,19 @@ luật về bảo vệ bí mật thông tin cá nhân, trường hợp các đi�
 một tổ chức từ chối sửa dữ liệu cá nhân trong các trường hợp như thế.
 
 14. THẮC MẮC, QUAN NGẠI HOẶC KHIẾU NẠI? LIÊN HỆ VỚI CHÚNG TÔI
+
+https://help.shopee.vn/portal/4/article/77244
+
+10/11
+
+8/4/26, 2:48 PM
+
+CHÍNH SÁCH BẢO MẬT | Shopee Trung tâm trợ giúp
+
+Trung tâm trợ giúp Shopee VN
+
 Nếu  bạn  có  bất  kỳ  thắc  mắc,  yêu  cầu  bảo  vệ  hoặc  khiếu  nại  nào  về  các  phương  pháp  bảo  vệ
+Shopee Policies
 quyền riêng tư của chúng tôi vui lòng liên hệ với chúng tôi theo thông tin sau:
 
 CÔNG TY TNHH SHOPEE
@@ -757,4 +769,5 @@ Privacy Policy
 
 https://help.shopee.vn/portal/4/article/77244
 
-10/10
+11/11
+
