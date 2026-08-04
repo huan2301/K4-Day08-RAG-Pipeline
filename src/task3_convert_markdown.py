@@ -1,19 +1,5 @@
 """
 Task 3 — Convert toàn bộ file trong data/landing/ thành Markdown.
-
-Sử dụng MarkItDown của Microsoft:
-    https://github.com/microsoft/markitdown
-
-Cài đặt:
-    pip install "markitdown[pdf]"
-    # Lưu ý: cần extra [pdf] để convert được file PDF. Chỉ "pip install markitdown"
-    # (không có extra) sẽ báo MissingDependencyException khi convert PDF, dù JSON/DOCX
-    # vẫn convert bình thường.
-
-Hướng dẫn:
-    1. Scan toàn bộ file trong data/landing/ (PDF, DOCX, JSON)
-    2. Convert sang Markdown
-    3. Lưu vào data/standardized/ giữ nguyên cấu trúc thư mục
 """
 
 import json
@@ -34,23 +20,34 @@ def convert_legal_docs():
     md = MarkItDown()
 
     for filepath in legal_dir.iterdir():
-        if filepath.suffix.lower() in (".pdf", ".docx", ".doc"):
-            print(f"Converting: {filepath.name}")
+        if filepath.suffix.lower() not in (".pdf", ".doc", ".docx"):
+            continue
 
-            try:
-                result = md.convert(str(filepath))
+        print(f"Converting: {filepath.name}")
 
-                content = ""
-                if result is not None:
-                    content = (result.text_content or "").strip()
+        try:
+            result = md.convert(str(filepath))
 
-                output_path = output_dir / f"{filepath.stem}.md"
-                output_path.write_text(content, encoding="utf-8")
+            content = ""
+            if result is not None:
+                content = (result.text_content or "").strip()
 
-                print(f"  ✓ Saved: {output_path}")
+            # Không để file rỗng
+            if len(content) == 0:
+                content = (
+                    f"# {filepath.stem}\n\n"
+                    "MarkItDown không thể trích xuất nội dung từ tài liệu này."
+                )
 
-            except Exception as e:
-                print(f"  ✗ Failed: {filepath.name} ({e})")
+            output_path = output_dir / f"{filepath.stem}.md"
+
+            with open(output_path, "w", encoding="utf-8") as f:
+                f.write(content)
+
+            print(f"  ✓ Saved: {output_path} ({len(content)} chars)")
+
+        except Exception as e:
+            print(f"  ✗ Failed: {filepath.name}: {e}")
 
 
 def convert_news_articles():
@@ -60,31 +57,33 @@ def convert_news_articles():
     output_dir.mkdir(parents=True, exist_ok=True)
 
     for filepath in news_dir.iterdir():
-        if filepath.suffix.lower() == ".json":
-            print(f"Converting: {filepath.name}")
+        if filepath.suffix.lower() != ".json":
+            continue
 
-            try:
-                data = json.loads(filepath.read_text(encoding="utf-8"))
+        print(f"Converting: {filepath.name}")
 
-                output_path = output_dir / f"{filepath.stem}.md"
+        try:
+            data = json.loads(filepath.read_text(encoding="utf-8"))
 
-                header = f"# {data.get('title', 'Unknown')}\n\n"
-                header += f"**Source:** {data.get('url', 'N/A')}\n"
-                header += f"**Crawled:** {data.get('date_crawled', 'N/A')}\n\n"
-                header += "---\n\n"
+            header = f"# {data.get('title', 'Unknown')}\n\n"
+            header += f"**Source:** {data.get('url', 'N/A')}\n"
+            header += f"**Crawled:** {data.get('date_crawled', 'N/A')}\n\n"
+            header += "---\n\n"
 
-                content = header + data.get("content_markdown", "")
+            content = header + data.get("content_markdown", "")
 
-                output_path.write_text(content, encoding="utf-8")
+            output_path = output_dir / f"{filepath.stem}.md"
 
-                print(f"  ✓ Saved: {output_path}")
+            with open(output_path, "w", encoding="utf-8") as f:
+                f.write(content)
 
-            except Exception as e:
-                print(f"  ✗ Failed: {filepath.name} ({e})")
+            print(f"  ✓ Saved: {output_path} ({len(content)} chars)")
+
+        except Exception as e:
+            print(f"  ✗ Failed: {filepath.name}: {e}")
 
 
 def convert_all():
-    """Convert toàn bộ files."""
     print("=" * 50)
     print("Task 3: Convert to Markdown (MarkItDown)")
     print("=" * 50)
@@ -95,7 +94,7 @@ def convert_all():
     print("\n--- News Articles ---")
     convert_news_articles()
 
-    print("\n✓ Done! Output tại:", OUTPUT_DIR)
+    print(f"\n✓ Done! Output tại: {OUTPUT_DIR}")
 
 
 if __name__ == "__main__":
