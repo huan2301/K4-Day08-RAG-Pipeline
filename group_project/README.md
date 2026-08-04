@@ -2,104 +2,259 @@
 
 ## Mục Tiêu
 
-Sau khi hoàn thành bài cá nhân, nhóm ngồi lại để xây dựng **1 trong 2 sản phẩm**:
+Xây dựng chatbot hỗ trợ khách hàng thương mại điện tử sử dụng kiến trúc **RAG Pipeline v2**.
+
+Chức năng chính:
+
+- Trả lời câu hỏi về chính sách thương mại điện tử.
+- Có citation nguồn.
+- Hỗ trợ follow-up questions.
+- Hiển thị source documents.
+- Đánh giá chất lượng bằng RAG Evaluation.
+
+Stack:
+
+- Streamlit
+- ChromaDB
+- Semantic Search
+- BM25
+- RRF Reranking
+- PageIndex Fallback
+- RAGAS Evaluation
+
 
 ---
 
-## Yêu cầu 1: Sản phẩm nhóm RAG Chatbot
+# Kiến Trúc Hệ Thống
 
-Xây dựng chatbot trả lời câu hỏi về chính sách thương mại điện tử và hỗ trợ khách hàng liên quan.
 
-**Yêu cầu:**
-- Giao diện chat (Streamlit / Gradio / Chainlit)
-- Trả lời có citation (dựa trên Task 10)
-- Hỗ trợ follow-up questions (conversation memory)
-- Hiển thị source documents đã dùng
+```mermaid
+flowchart TD
 
-**Stack gợi ý:**
-```
-Chainlit/Streamlit → Retrieval (Task 9) → Generation (Task 10) → Display
-```
+A[Data Collection] --> B[Markdown Conversion]
+B --> C[Chunking + Embedding]
+C --> D[ChromaDB Vector Store]
 
----
+U[User] --> UI[Streamlit Chat UI]
 
-## Yêu cầu 2: RAG Evaluation Pipeline
+UI --> R[Retrieval Pipeline]
 
-Sử dụng **1 trong 3 framework** sau để evaluate pipeline RAG của nhóm:
+R --> S[Semantic Search]
+R --> B[BM25 Search]
 
-### Framework lựa chọn
+S --> F[RRF Fusion]
+B --> F
 
-| Framework | Cài đặt | Đặc điểm |
-|-----------|---------|-----------|
-| [DeepEval](https://github.com/confident-ai/deepeval) | `pip install deepeval` | Nhiều metric built-in, dễ integrate với pytest |
-| [RAGAS](https://github.com/explodinggradients/ragas) | `pip install ragas` | Chuẩn industry cho RAG eval, 3 trục chính |
-| [TruLens](https://github.com/truera/trulens) | `pip install trulens` | Dashboard UI, feedback functions mạnh |
+F --> RR[Reranking]
 
-### Yêu cầu Evaluation
+RR --> CTX[Context Documents]
 
-1. **Tạo Golden Dataset** — tối thiểu 15 cặp Q&A (question, expected_answer, expected_context)
-2. **Chạy evaluation** trên toàn bộ golden dataset với các metrics sau:
-   - **Faithfulness** — câu trả lời có bám đúng context không?
-   - **Answer Relevance** — câu trả lời có đúng câu hỏi không?
-   - **Context Recall** — retriever có lấy đủ evidence không?
-   - **Context Precision** — trong context lấy về, bao nhiêu % thực sự hữu ích?
-3. **So sánh A/B** — chạy eval trên ít nhất 2 config khác nhau (ví dụ: có reranking vs không reranking, hoặc hybrid vs dense-only)
-4. **Báo cáo** — bảng điểm + phân tích worst performers + đề xuất cải tiến
+CTX --> LLM[LLM Generation]
 
-Xem code mẫu (DeepEval/RAGAS/TruLens) chi tiết trong `README.md` gốc mục "Yêu cầu 2".
+LLM --> ANS[Answer + Citation]
 
-### Deliverable Evaluation
+ANS --> UI
 
-- [ ] File `group_project/evaluation/golden_dataset.json` — 15+ cặp Q&A
-- [ ] File `group_project/evaluation/eval_pipeline.py` — script chạy evaluation
-- [ ] File `group_project/evaluation/results.md` — bảng điểm + phân tích
-- [ ] So sánh A/B ít nhất 2 configs
 
----
+G[Golden Dataset] --> E[RAGAS Evaluation]
 
-## Yêu Cầu Chung
-
-1. **Tích hợp pipeline** từ bài cá nhân của các thành viên
-2. **Demo hoạt động được** trong buổi trình bày (chạy local hoặc deploy)
-3. **Evaluation pipeline** chạy được và có báo cáo kết quả
-4. **Code push lên repository** chung của nhóm
-5. **README** mô tả kiến trúc và phân công (điền bên dưới)
-
----
-
-## Kiến Trúc Hệ Thống
-
-```
-[Vẽ diagram kiến trúc ở đây]
+E --> M[Metrics:
+Faithfulness,
+Relevance,
+Recall,
+Precision]
 ```
 
----
-
-## Phân Công Công Việc
-
-| Thành viên | MSSV | Nhiệm vụ | Trạng thái |
-|-----------|------|----------|------------|
-| | | | |
-| | | | |
-| | | | |
-| | | | |
 
 ---
 
-## Hướng Dẫn Chạy
+# Pipeline
+
+
+## Retrieval
+
+```
+Query
+ |
+ +--> Semantic Search
+ |
+ +--> BM25 Search
+ |
+ +--> RRF Fusion
+ |
+ +--> Reranking
+ |
+ +--> Context
+```
+
+
+## Generation
+
+- LLM sinh câu trả lời dựa trên context.
+- Bắt buộc citation.
+- Không trả lời nếu không có evidence.
+
+
+---
+
+# Tính năng Chatbot
+
+- Streamlit chat interface.
+- Conversation memory.
+- Follow-up questions.
+- Hiển thị nguồn tài liệu sử dụng.
+- Citation trong câu trả lời.
+
+
+---
+
+# Evaluation Pipeline
+
+
+Framework:
+
+```
+RAGAS
+```
+
+
+Golden Dataset:
+
+```
+group_project/evaluation/golden_dataset.json
+```
+
+Yêu cầu:
+
+- >=15 câu hỏi Q&A.
+
+
+Metrics:
+
+| Metric | Ý nghĩa |
+|-|-|
+| Faithfulness | Câu trả lời có đúng context |
+| Answer Relevance | Trả lời đúng câu hỏi |
+| Context Recall | Retriever lấy đủ evidence |
+| Context Precision | Context có hữu ích |
+
+
+A/B Testing:
+
+| Config | Mô tả |
+|-|-|
+| Config A | Hybrid Retrieval + RRF + Reranking |
+| Config B | Dense Retrieval Only |
+
+
+Kết quả:
+
+```
+group_project/evaluation/results.md
+```
+
+
+---
+
+# Phân Công Công Việc
+
+
+| Thành viên | Nhiệm vụ |
+|-|-|
+| Nguyễn Ngọc Huân | RAG Architecture, Backend Integration |
+| Vương Đức Thoại | Data Processing, Retrieval Pipeline |
+| Lê Đình Việt | Streamlit UI, Conversation Memory |
+| Quách Thanh Hưng | Golden Dataset, Evaluation |
+
+
+---
+
+# Cấu Trúc Thư Mục
+
+
+```text
+group_project/
+
+├── README.md
+
+└── evaluation/
+
+    ├── golden_dataset.json
+
+    ├── eval_pipeline.py
+
+    └── results.md
+
+
+app.py
+
+src/
+
+├── task5_semantic_search.py
+
+├── task6_lexical_search.py
+
+├── task7_reranking.py
+
+├── task8_pageindex_vectorless.py
+
+├── task9_retrieval_pipeline.py
+
+└── task10_generation.py
+```
+
+
+---
+
+# Hướng Dẫn Chạy
+
+
+Cài đặt:
 
 ```bash
-# Cài đặt dependencies
 pip install -r requirements.txt
-
-# Chạy app
-streamlit run app.py
-# hoặc
-chainlit run app.py
+pip install ragas datasets
 ```
+
+
+Chạy chatbot:
+
+```bash
+streamlit run app.py
+```
+
+
+Chạy evaluation:
+
+```bash
+python -m group_project.evaluation.eval_pipeline
+```
+
+
+Chạy test:
+
+```bash
+pytest tests/ -v
+```
+
 
 ---
 
-## Lưu ý
+# Deliverables
 
-Hãy giữ lại repo này nếu như bạn học track 3 giai đoạn 2, chúng ta sẽ phát triển tiếp dự án lên knowledge graph để khắc phục các câu hỏi hóc búa khi có các câu hỏi khó.
+- [x] RAG Chatbot Demo
+- [x] Retrieval Pipeline Task 1-10
+- [x] Citation Generation
+- [x] Golden Dataset >=15 Q&A
+- [x] RAGAS Evaluation
+- [x] A/B Comparison
+- [x] Evaluation Report
+
+
+---
+
+# Hướng Phát Triển
+
+- Tích hợp Knowledge Graph.
+- Cải thiện Reranking.
+- Deploy chatbot production.
