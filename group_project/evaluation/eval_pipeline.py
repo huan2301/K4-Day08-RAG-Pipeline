@@ -20,10 +20,25 @@ chừng, thử giảm xuống subset 5 câu để chạy kịp trong buổi, ho�
 """
 
 import json
+import os
 from pathlib import Path
+import time
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 GOLDEN_DATASET_PATH = Path(__file__).parent / "golden_dataset.json"
 RESULTS_PATH = Path(__file__).parent / "results.md"
+
+# RAGAS uses this LLM as an independent judge, not as the chatbot's generator.
+# Override these values in .env when using a different OpenRouter deployment.
+RAGAS_MODEL = os.getenv("RAGAS_MODEL", "nvidia/nemotron-3-ultra-30b-a3b")
+RAGAS_EMBEDDING_MODEL = os.getenv(
+    "RAGAS_EMBEDDING_MODEL", "openai/text-embedding-3-small"
+)
+OPENROUTER_BASE_URL = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
+REQUEST_DELAY_SECONDS = float(os.getenv("RAGAS_REQUEST_DELAY_SECONDS", "5"))
 
 
 def load_golden_dataset() -> list[dict]:
@@ -80,39 +95,101 @@ def evaluate_with_deepeval(rag_pipeline, golden_dataset: list[dict]) -> dict:
 # Option 2: RAGAS
 # =============================================================================
 
-def evaluate_with_ragas(rag_pipeline, golden_dataset: list[dict]) -> dict:
+def evaluate_with_ragas(rag_pipeline, golden_dataset: list[dict]):
     """
     Evaluate RAG pipeline sử dụng RAGAS.
 
-    pip install ragas
+    Nemotron 3 Ultra is used as the judge through OpenRouter. Requests are
+    serialized and paced at five seconds by default to protect API quotas.
+
+    Required environment variables:
+        OPENROUTER_API_KEY: OpenRouter key used by the RAGAS judge.
+
+    Optional environment variables:
+        RAGAS_MODEL: Override the Nemotron 3 Ultra model ID.
+        RAGAS_REQUEST_DELAY_SECONDS: Minimum interval between requests.
     """
-    # TODO: Implement
-    #
-    # from ragas import evaluate
-    # from ragas.metrics import (
-    #     faithfulness,
-    #     answer_relevancy,
-    #     context_recall,
-    #     context_precision,
-    # )
-    # from datasets import Dataset
-    #
-    # eval_data = {"question": [], "answer": [], "contexts": [], "ground_truth": []}
-    #
-    # for item in golden_dataset:
-    #     result = rag_pipeline.generate_with_citation(item["question"])
-    #     eval_data["question"].append(item["question"])
-    #     eval_data["answer"].append(result["answer"])
-    #     eval_data["contexts"].append([c["content"] for c in result["sources"]])
-    #     eval_data["ground_truth"].append(item["expected_answer"])
-    #
-    # dataset = Dataset.from_dict(eval_data)
-    # result = evaluate(
-    #     dataset,
-    #     metrics=[faithfulness, answer_relevancy, context_recall, context_precision],
-    # )
-    # return result.to_pandas()
-    raise NotImplementedError("Implement evaluate_with_ragas")
+    if not golden_dataset:
+        raise ValueError("golden_dataset must contain at least one evaluation case.")
+    if REQUEST_DELAY_SECONDS < 0:
+        raise ValueError("RAGAS_REQUEST_DELAY_SECONDS must be non-negative.")
+
+    api_key = os.getenv("OPENROUTER_API_KEY")
+    if not api_key:
+        raise RuntimeError("OPENROUTER_API_KEY is required for RAGAS evaluation.")
+
+    from datasets import Dataset
+    from langchain_core.rate_limiters import InMemoryRateLimiter
+    from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+    from ragas import evaluate
+    from ragas.embeddings import LangchainEmbeddingsWrapper
+    from ragas.llms import LangchainLLMWrapper
+    from ragas.metrics import (
+        answer_relevancy,
+        context_precision,
+        context_recall,
+        faithfulness,
+    )
+    from ragas.run_config import RunConfig
+
+    generate = getattr(rag_pipeline, "generate_with_citation", rag_pipeline)
+    if not callable(generate):
+        raise TypeError("rag_pipeline must be callable or expose generate_with_citation().")
+
+    eval_data = {"question": [], "answer": [], "contexts": [], "ground_truth": []}
+    for item in golden_dataset:
+        result = generate(item["question"])
+        if not isinstance(result, dict) or not isinstance(result.get("answer"), str):
+            raise ValueError("RAG pipeline must return a dict containing a string 'answer'.")
+
+        sources = result.get("sources", [])
+        if not isinstance(sources, list):
+            raise ValueError("RAG pipeline result 'sources' must be a list.")
+
+        eval_data["question"].append(item["question"])
+        eval_data["answer"].append(result["answer"])
+        eval_data["contexts"].append(
+            [source["content"] for source in sources if isinstance(source, dict) and source.get("content")]
+        )
+        eval_data["ground_truth"].append(item["expected_answer"])
+
+        # Keep pipeline generation requests away from the first RAGAS judge call.
+        time.sleep(REQUEST_DELAY_SECONDS)
+
+    request_rate_limiter = InMemoryRateLimiter(
+        requests_per_second=1 / REQUEST_DELAY_SECONDS if REQUEST_DELAY_SECONDS else 1000,
+        check_every_n_seconds=0.1,
+        max_bucket_size=1,
+    )
+    judge_llm = LangchainLLMWrapper(
+        ChatOpenAI(
+            model=RAGAS_MODEL,
+            api_key=api_key,
+            base_url=OPENROUTER_BASE_URL,
+            temperature=0,
+            max_retries=0,
+            rate_limiter=request_rate_limiter,
+        )
+    )
+    embeddings = LangchainEmbeddingsWrapper(
+        OpenAIEmbeddings(
+            model=RAGAS_EMBEDDING_MODEL,
+            api_key=api_key,
+            base_url=OPENROUTER_BASE_URL,
+            max_retries=0,
+        )
+    )
+
+    return evaluate(
+        Dataset.from_dict(eval_data),
+        metrics=[faithfulness, answer_relevancy, context_recall, context_precision],
+        llm=judge_llm,
+        embeddings=embeddings,
+        # RAGAS otherwise evaluates metric jobs concurrently, bypassing the pace
+        # intended for a rate-limited API key.
+        run_config=RunConfig(max_workers=1, max_retries=0),
+        raise_exceptions=True,
+    )
 
 
 # =============================================================================
@@ -165,19 +242,19 @@ def compare_configs(rag_pipeline, golden_dataset: list[dict]):
     - Config C: hybrid search + PageIndex fallback
     """
     # TODO: Implement A/B comparison
-    #
-    # configs = {
-    #     "hybrid_rerank": {"use_reranking": True, "alpha": 0.5},
-    #     "dense_only": {"use_reranking": False, "alpha": 1.0},
-    # }
-    #
-    # results = {}
-    # for config_name, params in configs.items():
-    #     # Run eval with this config
-    #     ...
-    #     results[config_name] = scores
-    #
-    # return results
+    
+    configs = {
+        "hybrid_rerank": {"use_reranking": True, "alpha": 0.5},
+        "dense_only": {"use_reranking": False, "alpha": 1.0},
+    }
+    
+    results = {}
+    for config_name, params in configs.items():
+        # Run eval with this config
+        ...
+        results[config_name] = scores
+    
+    return results
     raise NotImplementedError("Implement compare_configs")
 
 
@@ -188,19 +265,19 @@ def compare_configs(rag_pipeline, golden_dataset: list[dict]):
 def export_results(results: dict, comparison: dict):
     """Export evaluation results to results.md"""
     # TODO: Format and write results
-    #
-    # content = "# RAG Evaluation Results\n\n"
-    # content += "## Overall Scores\n\n"
-    # content += "| Metric | Score |\n|--------|-------|\n"
-    # ...
-    # content += "\n## A/B Comparison\n\n"
-    # ...
-    # content += "\n## Worst Performers\n\n"
-    # ...
-    # content += "\n## Recommendations\n\n"
-    # ...
-    #
-    # RESULTS_PATH.write_text(content, encoding="utf-8")
+    
+    content = "# RAG Evaluation Results\n\n"
+    content += "## Overall Scores\n\n"
+    content += "| Metric | Score |\n|--------|-------|\n"
+    ...
+    content += "\n## A/B Comparison\n\n"
+    ...
+    content += "\n## Worst Performers\n\n"
+    ...
+    content += "\n## Recommendations\n\n"
+    ...
+    
+    RESULTS_PATH.write_text(content, encoding="utf-8")
     raise NotImplementedError("Implement export_results")
 
 
@@ -208,14 +285,7 @@ if __name__ == "__main__":
     golden_dataset = load_golden_dataset()
     print(f"Loaded {len(golden_dataset)} test cases")
 
-    # TODO: Import your RAG pipeline
-    # from src.task10_generation import generate_with_citation
-    #
-    # Chọn 1 framework:
-    # results = evaluate_with_deepeval(pipeline, golden_dataset)
-    # results = evaluate_with_ragas(pipeline, golden_dataset)
-    # results = evaluate_with_trulens(pipeline, golden_dataset)
-    #
-    # comparison = compare_configs(pipeline, golden_dataset)
-    # export_results(results, comparison)
-    print("⚠ Implement evaluation logic and run again!")
+    from src.task10_generation import generate_with_citation
+
+    results = evaluate_with_ragas(generate_with_citation, golden_dataset)
+    print(results.to_pandas().to_string(index=False))
