@@ -1,18 +1,7 @@
 """
 Task 6 — Lexical Search Module (BM25).
 
-Mặc định sử dụng BM25. Nếu dùng phương pháp khác (TF-IDF, Elasticsearch,
-Weaviate BM25 built-in), hãy giải thích cơ chế trong buổi demo → +5 bonus.
-
-Cài đặt:
-    pip install rank-bm25
-
-BM25 hoạt động thế nào:
-    - Term Frequency (TF): từ xuất hiện nhiều trong document → điểm cao
-    - Inverse Document Frequency (IDF): từ hiếm → quan trọng hơn
-    - Document length normalization: document dài không bị ưu tiên quá mức
-    - Formula: score(q,d) = Σ IDF(qi) * (tf(qi,d) * (k1+1)) / (tf(qi,d) + k1*(1-b+b*|d|/avgdl))
-    - k1=1.5 (term saturation), b=0.75 (length normalization)
+Mặc định sử dụng BM25.
 """
 
 from pathlib import Path
@@ -23,100 +12,162 @@ STANDARDIZED_DIR = Path(__file__).parent.parent / "data" / "standardized"
 
 
 def _tokenize(text: str) -> list[str]:
-    """Normalize text so punctuation does not prevent keyword matches."""
-    return re.findall(r"\w+", text.casefold(), flags=re.UNICODE)
+    """
+    Normalize text for BM25 matching.
+
+    - lowercase
+    - convert common English keywords to Vietnamese equivalents
+    - remove punctuation
+    """
+    text = text.casefold()
+
+    # Mapping để query tiếng Anh match dữ liệu tiếng Việt
+    synonyms = {
+        "refund": "hoan tien",
+        "return": "tra hang",
+        "payment": "thanh toan",
+        "shipping": "van chuyen",
+        "delivery": "giao hang",
+        "order": "don hang",
+        "purchase": "mua hang",
+    }
+
+    for eng, vie in synonyms.items():
+        text = text.replace(eng, vie)
+
+    return re.findall(r"\w+", text, flags=re.UNICODE)
 
 
 def _load_corpus() -> list[dict]:
-    """Load standardized Markdown files as the lexical-search corpus."""
+    """
+    Load standardized Markdown files.
+    """
     if not STANDARDIZED_DIR.exists():
         return []
 
     corpus = []
+
     for markdown_file in sorted(STANDARDIZED_DIR.rglob("*.md")):
-        content = markdown_file.read_text(encoding="utf-8").strip()
+        content = markdown_file.read_text(
+            encoding="utf-8"
+        ).strip()
+
         if not content:
             continue
 
         relative_path = markdown_file.relative_to(STANDARDIZED_DIR)
+
         corpus.append(
             {
                 "content": content,
                 "metadata": {
                     "source": str(relative_path),
-                    "type": relative_path.parts[0] if len(relative_path.parts) > 1 else "unknown",
+                    "type": (
+                        relative_path.parts[0]
+                        if len(relative_path.parts) > 1
+                        else "unknown"
+                    ),
                 },
             }
         )
+
     return corpus
 
 
-# List of {'content': str, 'metadata': dict}
+# Corpus dùng cho lexical search
 CORPUS: list[dict] = _load_corpus()
 
 
 def build_bm25_index(corpus: list[dict]):
     """
-    Xây dựng BM25 index từ corpus.
-
-    Args:
-        corpus: List of {'content': str, 'metadata': dict}
+    Build BM25 index.
     """
     from rank_bm25 import BM25Okapi
 
     if not corpus:
         return None
 
-    tokenized_corpus = [_tokenize(doc["content"]) for doc in corpus]
+    tokenized_corpus = [
+        _tokenize(doc["content"])
+        for doc in corpus
+    ]
+
     return BM25Okapi(tokenized_corpus)
 
 
-def lexical_search(query: str, top_k: int = 10) -> list[dict]:
+def lexical_search(
+    query: str,
+    top_k: int = 10
+) -> list[dict]:
     """
-    Tìm kiếm từ khóa sử dụng BM25.
-
-    Args:
-        query: Câu truy vấn
-        top_k: Số lượng kết quả tối đa
+    BM25 keyword search.
 
     Returns:
-        List of {
-            'content': str,
-            'score': float,      # BM25 score
-            'metadata': dict
-        }
-        Sorted by score descending.
+        [
+            {
+                "content": str,
+                "score": float,
+                "metadata": dict
+            }
+        ]
     """
-    if top_k <= 0 or not query.strip() or not CORPUS:
+
+    if (
+        top_k <= 0
+        or not query.strip()
+        or not CORPUS
+    ):
         return []
 
     bm25 = build_bm25_index(CORPUS)
+
+    if bm25 is None:
+        return []
+
     query_tokens = _tokenize(query)
-    if not query_tokens or bm25 is None:
+
+    if not query_tokens:
         return []
 
     scores = bm25.get_scores(query_tokens)
-    ranked_indices = sorted(range(len(CORPUS)), key=lambda index: (-scores[index], index))
+
+    ranked_indices = sorted(
+        range(len(CORPUS)),
+        key=lambda i: (-scores[i], i)
+    )
 
     results = []
+
     for index in ranked_indices:
         score = float(scores[index])
-        if score <= 0:
-            continue
+
+        # Không filter score <= 0
+        # Vì BM25 corpus nhỏ có thể trả score âm
         results.append(
             {
                 "content": CORPUS[index]["content"],
                 "score": score,
-                "metadata": CORPUS[index].get("metadata", {}),
+                "metadata": CORPUS[index].get(
+                    "metadata",
+                    {}
+                ),
             }
         )
-        if len(results) == top_k:
+
+        if len(results) >= top_k:
             break
+
     return results
 
 
 if __name__ == "__main__":
-    # Test
-    results = lexical_search("phương thức thanh toán shopee", top_k=5)
-    for r in results:
-        print(f"[{r['score']:.3f}] {r['content'][:100]}...")
+    results = lexical_search(
+        "phương thức thanh toán shopee",
+        top_k=5
+    )
+
+    for result in results:
+        print(
+            f"[{result['score']:.3f}] "
+            f"{result['content'][:100]}..."
+        )
