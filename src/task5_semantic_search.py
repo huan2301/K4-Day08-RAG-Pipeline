@@ -41,7 +41,12 @@ def get_embedding_model() -> EmbeddingModel:
     """Tải một lần embedding model đã chọn ở Task 4."""
     module = import_module("sentence_transformers")
     model_class = getattr(module, "SentenceTransformer")
-    return cast(EmbeddingModel, model_class(EMBEDDING_MODEL))
+    # Task 4 đã tải model khi index. Dùng cache local để mỗi lần search không
+    # gửi HEAD request lên Hugging Face và vẫn chạy được khi demo mất mạng.
+    return cast(
+        EmbeddingModel,
+        model_class(EMBEDDING_MODEL, local_files_only=True),
+    )
 
 
 @lru_cache(maxsize=1)
