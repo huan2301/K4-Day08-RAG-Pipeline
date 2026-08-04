@@ -48,8 +48,10 @@ CHUNKING_METHOD = "recursive"  # "recursive" | "markdown_header" | "semantic"
 # TODO: Chọn embedding model và giải thích
 # BGE-M3 hỗ trợ đa ngôn ngữ, phù hợp tài liệu và câu hỏi tiếng Việt.
 # Mỗi văn bản được biểu diễn bằng vector 1024 chiều.
-EMBEDDING_MODEL = "BAAI/bge-m3"  # Vì sao? Multilingual, tốt cho tiếng Việt lẫn tiếng Anh
-EMBEDDING_DIM = 1024
+EMBEDDING_MODEL = (
+    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+)
+EMBEDDING_DIM = 384
 
 # TODO: Chọn vector store
 # ChromaDB chạy local, lưu persistent và hỗ trợ cosine distance.
