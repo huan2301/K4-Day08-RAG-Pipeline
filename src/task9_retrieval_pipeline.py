@@ -38,10 +38,59 @@ from .task8_pageindex_vectorless import pageindex_search
 # TODO: Calibrate threshold này bằng cách tự đo điểm cosine của semantic_search
 # cho câu hỏi liên quan vs câu hỏi lạc đề (xem ghi chú ở trên) — ĐỪNG copy nguyên
 # giá trị mẫu, mỗi corpus/embedding model sẽ cho khoảng điểm khác nhau.
-SCORE_THRESHOLD = 0.3   # Nếu best score (cosine gốc) < threshold → fallback PageIndex
-DEFAULT_TOP_K = 5
-RERANK_METHOD = "rrf"  # "cross_encoder" | "mmr" | "rrf"
+# Ngưỡng được so với cosine similarity gốc từ semantic_search.
+# Không so với RRF score.
+SCORE_THRESHOLD = 0.48
 
+# Số kết quả mặc định trả về cho generation.
+DEFAULT_TOP_K = 5
+
+# Semantic và BM25 được hợp nhất bằng RRF.
+RERANK_METHOD = "rrf"
+
+def make_result_key(item: dict) -> str:
+    """
+    Nhận diện cùng một chunk giữa hai retriever.
+    """
+    metadata = item.get("metadata") or {}
+
+    source = metadata.get("source")
+    chunk_index = metadata.get("chunk_index")
+
+    if source is not None and chunk_index is not None:
+        return f"{source}::chunk::{chunk_index}"
+
+    content = str(item.get("content", ""))
+    return " ".join(content.lower().split())
+
+
+def merge_without_rrf(
+    dense_results: list[dict],
+    sparse_results: list[dict],
+    top_k: int,
+) -> list[dict]:
+    """
+    Merge đơn giản để phục vụ A/B test RRF vs không RRF.
+
+    Dense được ưu tiên trước, sau đó bổ sung các sparse result
+    chưa xuất hiện.
+    """
+    merged = []
+    seen = set()
+
+    for item in dense_results + sparse_results:
+        key = make_result_key(item)
+
+        if not key or key in seen:
+            continue
+
+        seen.add(key)
+        merged.append(item.copy())
+
+        if len(merged) >= top_k:
+            break
+
+    return merged
 
 def retrieve(
     query: str,
@@ -50,61 +99,204 @@ def retrieve(
     use_reranking: bool = True,
 ) -> list[dict]:
     """
-    Retrieval pipeline hoàn chỉnh với fallback logic.
+    Retrieval pipeline hoàn chỉnh.
 
-    Pipeline:
-        Query
-          ├→ Semantic Search → dense_results (giữ điểm cosine gốc)
-          ├→ Lexical Search  → sparse_results
-          │
-          ├→ Merge (RRF) → merged_results
-          ├→ Rerank → reranked_results
-          │
-          └→ If dense_results[0]["score"] < threshold:
-                └→ PageIndex Vectorless → fallback_results
-
-    Args:
-        query: Câu truy vấn
-        top_k: Số lượng kết quả cuối cùng
-        score_threshold: Ngưỡng điểm cosine gốc tối thiểu (KHÔNG phải điểm RRF)
-        use_reranking: Có áp dụng reranking hay không
+    Quy trình:
+        1. Chạy Semantic Search.
+        2. Chạy BM25 Search.
+        3. Giữ lại cosine score gốc.
+        4. Gộp hai danh sách bằng RRF.
+        5. Nếu cosine tốt nhất dưới threshold, gọi PageIndex.
+        6. Nếu PageIndex không khả dụng, trả kết quả hybrid.
 
     Returns:
         List of {
-            'content': str,
-            'score': float,
-            'metadata': dict,
-            'source': str  # 'hybrid' hoặc 'pageindex'
+            "content": str,
+            "score": float,
+            "metadata": dict,
+            "source": "hybrid" hoặc "pageindex"
         }
     """
-    # TODO: Implement full retrieval pipeline
-    #
-    # Step 1: Song song chạy semantic + lexical
-    # dense_results = semantic_search(query, top_k=top_k * 2)
-    # sparse_results = lexical_search(query, top_k=top_k * 2)
-    #
-    # Step 2: Merge bằng RRF
-    # merged = rerank_rrf([dense_results, sparse_results], top_k=top_k * 2)
-    # for item in merged:
-    #     item["source"] = "hybrid"
-    #
-    # Step 3: Rerank
-    # if use_reranking and merged:
-    #     final_results = rerank(query, merged, top_k=top_k, method=RERANK_METHOD)
-    # else:
-    #     final_results = merged[:top_k]
-    #
-    # Step 4: Check threshold DÙNG ĐIỂM COSINE GỐC (dense_results), KHÔNG PHẢI RRF
-    # best_score = dense_results[0]["score"] if dense_results else 0.0
-    # if best_score < score_threshold:
-    #     print(f"  ⚠ Semantic best score ({best_score:.3f}) < threshold ({score_threshold})")
-    #     fallback = pageindex_search(query, top_k=top_k)
-    #     if fallback:
-    #         return fallback
-    #
-    # return final_results[:top_k]
-    raise NotImplementedError("Implement retrieve")
+    query = query.strip()
 
+    if not query:
+        return []
+
+    if top_k <= 0:
+        return []
+
+    if not 0.0 <= score_threshold <= 1.0:
+        raise ValueError(
+            "score_threshold phải nằm trong khoảng [0, 1]"
+        )
+
+    # Lấy nhiều candidates hơn kết quả cuối để RRF có đủ lựa chọn.
+    candidate_top_k = max(top_k * 2, top_k)
+
+    # ---------------------------------------------------------
+    # Step 1: Dense retrieval bằng semantic search
+    # ---------------------------------------------------------
+    dense_results = semantic_search(
+        query=query,
+        top_k=candidate_top_k,
+    )
+    dense_results = clean_results(dense_results)
+
+    # Semantic Search phải trả score giảm dần.
+    # Sort lại để bảo đảm phần tử đầu có cosine tốt nhất.
+    dense_results.sort(
+        key=lambda item: item["score"],
+        reverse=True,
+    )
+
+    # Giữ riêng cosine score gốc để quyết định fallback.
+    best_dense_score = (
+        dense_results[0]["score"]
+        if dense_results
+        else 0.0
+    )
+
+    # ---------------------------------------------------------
+    # Step 2: Sparse retrieval bằng BM25
+    # ---------------------------------------------------------
+    sparse_results = lexical_search(
+        query=query,
+        top_k=candidate_top_k,
+    )
+    sparse_results = clean_results(sparse_results)
+
+    # RRF sử dụng thứ hạng, nên cần bảo đảm BM25 đã sort giảm dần.
+    sparse_results.sort(
+        key=lambda item: item["score"],
+        reverse=True,
+    )
+
+    # ---------------------------------------------------------
+    # Step 3: Gộp Semantic + BM25 bằng RRF
+    # ---------------------------------------------------------
+    if use_reranking:
+        merged_results = rerank_rrf(
+            ranked_lists=[
+                dense_results,
+                sparse_results,
+            ],
+            top_k=candidate_top_k,
+            k=60,
+        )
+    else:
+        # Khi tắt RRF để A/B testing, ưu tiên dense trước,
+        # sau đó thêm sparse và loại chunk trùng.
+        merged_results = merge_without_rrf(
+            dense_results,
+            sparse_results,
+            top_k=candidate_top_k,
+        )
+
+    hybrid_results = [
+        normalize_result(item, source="hybrid")
+        for item in merged_results
+        if item.get("content")
+    ]
+
+    # ---------------------------------------------------------
+    # Step 4: Kiểm tra fallback bằng COSINE GỐC
+    # ---------------------------------------------------------
+    should_fallback = best_dense_score < score_threshold
+
+    if should_fallback:
+        print(
+            "  ⚠ Semantic best score "
+            f"({best_dense_score:.3f}) "
+            f"< threshold ({score_threshold:.3f})"
+        )
+        print("  → Thử PageIndex fallback")
+
+        try:
+            fallback_results = pageindex_search(
+                query=query,
+                top_k=top_k,
+            )
+
+            fallback_results = [
+                normalize_result(item, source="pageindex")
+                for item in clean_results(fallback_results)
+            ]
+
+            if fallback_results:
+                return fallback_results[:top_k]
+
+            print(
+                "  ⚠ PageIndex không trả về kết quả, "
+                "sử dụng hybrid results"
+            )
+
+        except Exception as exc:
+            # PageIndex là dịch vụ ngoài; thiếu API key, hết quota
+            # hoặc lỗi mạng không được làm hỏng toàn bộ pipeline.
+            print(
+                "  ⚠ PageIndex fallback không khả dụng: "
+                f"{exc}"
+            )
+            print("  → Sử dụng hybrid results")
+
+    return hybrid_results[:top_k]
+
+def normalize_result(
+    item: dict,
+    source: str,
+) -> dict:
+    """
+    Chuẩn hóa kết quả từ các retriever về cùng schema.
+
+    Args:
+        item: Kết quả retrieval gốc.
+        source: "hybrid" hoặc "pageindex".
+    """
+    metadata = item.get("metadata") or {}
+
+    try:
+        score = float(item.get("score", 0.0))
+    except (TypeError, ValueError):
+        score = 0.0
+
+    return {
+        **item,
+        "content": str(item.get("content", "")).strip(),
+        "score": score,
+        "metadata": metadata,
+        "source": source,
+    }
+def clean_results(results: list[dict]) -> list[dict]:
+    """
+    Loại kết quả không hợp lệ và chuẩn hóa score.
+    """
+    cleaned = []
+
+    for item in results or []:
+        if not isinstance(item, dict):
+            continue
+
+        content = str(item.get("content", "")).strip()
+
+        if not content:
+            continue
+
+        normalized = item.copy()
+        normalized["content"] = content
+        normalized["metadata"] = (
+            item.get("metadata") or {}
+        ).copy()
+
+        try:
+            normalized["score"] = float(
+                item.get("score", 0.0)
+            )
+        except (TypeError, ValueError):
+            normalized["score"] = 0.0
+
+        cleaned.append(normalized)
+
+    return cleaned
 
 if __name__ == "__main__":
     test_queries = [
